@@ -1,4 +1,23 @@
-// In script.js, sanitize form inputs before submission
+// script.js
+
+// Typing Animation for Hero Section
+document.addEventListener('DOMContentLoaded', () => {
+    const typedName = document.getElementById('typed-name');
+    const text = "Hi, I'm Nathan Bristow";
+    let index = 0;
+    
+    function type() {
+        if (index < text.length) {
+            typedName.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 250); // Adjust speed (100ms per character)
+        }
+    }
+
+    type();
+});
+
+// Contact Form Submission
 const contactForm = document.querySelector('.contact-form');
 
 contactForm.addEventListener('submit', async (e) => {
@@ -7,23 +26,32 @@ contactForm.addEventListener('submit', async (e) => {
     const formData = new FormData(contactForm);
     let name = formData.get('name');
     let email = formData.get('email');
+    let phone = formData.get('phone');
     let message = formData.get('message');
 
     // Sanitize inputs using DOMPurify
     name = DOMPurify.sanitize(name);
     email = DOMPurify.sanitize(email);
+    phone = DOMPurify.sanitize(phone);
     message = DOMPurify.sanitize(message);
 
     // Basic validation
-    if (!name || !email || !message) {
+    if (!name || !email || !phone || !message) {
         alert('Please fill out all fields.');
         return;
     }
 
-    // Email format validation (simple regex example)
+    // Email format validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         alert('Please enter a valid email address.');
+        return;
+    }
+
+    // Optional: Phone number validation (simple example)
+    const phoneRegex = /^\+?[\d\s-]{10,}$/;
+    if (!phoneRegex.test(phone)) {
+        alert('Please enter a valid phone number (e.g., 07 5585 4285 or +61 7 55 854 285).');
         return;
     }
 
@@ -31,6 +59,7 @@ contactForm.addEventListener('submit', async (e) => {
         // Update FormData with sanitized values
         formData.set('name', name);
         formData.set('email', email);
+        formData.set('phone', phone);
         formData.set('message', message);
 
         // Send form data to Formspree

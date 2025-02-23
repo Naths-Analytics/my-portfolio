@@ -33,7 +33,7 @@ body {
 .top-nav .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #ffffff; /* Cyan accent */
+    color: #00b4d8; /* Cyan accent */
 }
 
 .nav-links {
@@ -75,6 +75,23 @@ body {
     font-size: 1.5rem;
     margin-bottom: 2rem;
     color: #ffffff;
+}
+
+#typed-name {
+    position: relative;
+}
+
+#typed-name::after {
+    content: '_'; /* Blinking cursor */
+    animation: blink 0.7s infinite;
+    color: #00b4d8; /* Cyan cursor to match theme */
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
 }
 
 .cta-button {
