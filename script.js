@@ -34,7 +34,7 @@ contactForm.addEventListener('submit', async (e) => {
         formData.set('message', message);
 
         // Send form data to Formspree
-        const response = await fetch('https://formspree.io/f/FORMSPREE_FORM_ID_PLACEHOLDER', {
+        const response = await fetch('https://formspree.io/f/xldgvwgr', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
