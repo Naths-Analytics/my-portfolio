@@ -55,7 +55,7 @@ body {
 
 /* Hero Section */
 .hero {
-    height: 80vh;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -230,20 +230,83 @@ body {
 }
 
 .contact-content {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
-    background: rgba(26, 38, 53, 0.8); /* Semi-transparent overlay */
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+    color: #ffffff;
     padding: 2rem;
+    background: rgba(26, 38, 53, 0.8); /* Semi-transparent overlay */
     border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.contact-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #00b4d8;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.contact-info p {
+    margin: 0.8rem 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-info p a {
+    color: #00b4d8;
+    text-decoration: none;
+    white-space: nowrap; /* Keeps email on a single line on desktop */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.contact-info p a:hover {
+    color: #0086a8; /* Darker cyan on hover */
+    text-decoration: underline;
+}
+
+.contact-info .social-icons {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.contact-info .social-icons a {
+    color: #00b4d8;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.contact-info .social-icons a:hover {
+    color: #0086a8; /* Darker cyan on hover */
 }
 
 .contact-form {
     flex: 1;
     min-width: 300px;
+    background: #2a3c4f; /* Darker navy, matching your theme */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    color: #ffffff; /* White text for contrast on dark background */
+}
+
+.contact-form h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #00b4d8; /* Cyan for heading */
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .contact-form input,
@@ -251,9 +314,9 @@ body {
     width: 100%;
     padding: 0.75rem;
     margin-bottom: 1rem;
-    border: 2px solid #00b4d8; /* Cyan border */
+    border: 2px solid #00b4d8; /* Cyan border, matching your theme */
     border-radius: 20px; /* Rounded for futuristic look */
-    background: #2a3c4f; /* Darker navy */
+    background: #1a2635; /* Dark navy, matching your theme */
     color: #ffffff;
     transition: border-color 0.3s;
 }
@@ -271,7 +334,7 @@ body {
 
 .contact-form button {
     padding: 0.75rem 1.5rem;
-    background: #00b4d8; /* Cyan button */
+    background: #00b4d8; /* Cyan button, matching your theme */
     color: #ffffff;
     border: 2px solid #00b4d8;
     border-radius: 20px;
@@ -283,30 +346,6 @@ body {
 .contact-form button:hover {
     background: #0086a8; /* Darker cyan */
     transform: translateY(-2px);
-}
-
-.social-links {
-    flex: 1;
-    min-width: 300px;
-}
-
-.social-links h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #00b4d8;
-}
-
-.social-links a {
-    display: block;
-    color: #00b4d8;
-    text-decoration: none;
-    margin: 0.5rem 0;
-    transition: color 0.3s;
-}
-
-.social-links a:hover {
-    color: #0086a8; /* Darker cyan */
-    text-decoration: underline;
 }
 
 /* Footer */
@@ -353,6 +392,19 @@ footer {
         flex-direction: column;
         align-items: center;
     }
+    .contact-info, .contact-form {
+        width: 100%;
+        margin: 0;
+    }
+    .contact-info p {
+        white-space: normal; /* Allow wrapping on mobile */
+        overflow: visible;
+        text-overflow: clip;
+        word-break: break-all; /* Breaks long text (like email) to fit */
+    }
+    .contact-form {
+        background: #2a3c4f; /* Ensure dark background on mobile */
+    }
 }
 
 @media (max-width: 480px) {
@@ -368,7 +420,15 @@ footer {
     .about, .projects, .contact {
         padding: 2rem 1rem;
     }
-    .contact-form, .social-links {
-        min-width: 100%;
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+        font-size: 0.9rem; /* Smaller text on very small screens */
+    }
+    .contact-info p {
+        font-size: 0.9rem;
+    }
+    .contact-info .social-icons a {
+        font-size: 1.2rem;
     }
 }
